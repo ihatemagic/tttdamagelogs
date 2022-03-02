@@ -327,6 +327,7 @@ hook.Add("ShouldCollide", "ShouldCollide_Ghost", function(ent1, ent2)
 end)
 
 if CLIENT then
+    local color_lightblue = Color(98, 176, 255)
     local mode = Damagelog.ULX_AutoslayMode
     if mode ~= 1 and mode ~= 2 then return end
     local aslay = mode == 1
