@@ -378,25 +378,25 @@ if CLIENT then
         end
     end)
 
-    hook.Add("Think", "JailWalls", function()
-        local function CheckWalls()
-            local found = false
+    local function CheckWalls()
+        local found = false
 
-            for k, v in pairs(ents) do
-                if IsValid(v) then
-                    v:SetCustomCollisionCheck(true)
-                    v.jailWall = true
-                    table.remove(ents, k)
-                    found = true
-                    break
-                end
-            end
-
-            if found then
-                CheckWalls()
+        for k, v in pairs(ents) do
+            if IsValid(v) then
+                v:SetCustomCollisionCheck(true)
+                v.jailWall = true
+                table.remove(ents, k)
+                found = true
+                break
             end
         end
 
+        if found then
+            CheckWalls()
+        end
+    end
+
+    hook.Add("Think", "JailWalls", function()
         CheckWalls()
     end)
 end
